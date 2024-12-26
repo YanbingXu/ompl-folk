@@ -94,7 +94,7 @@ set_package_properties(Python PROPERTIES
     URL "https://www.python.org"
     PURPOSE "Used for python bindings.")
 find_package(Python QUIET)
-find_boost_python()
+#find_boost_python()
 
 if(PYTHON_FOUND)
     set_package_properties(pypy PROPERTIES
@@ -136,26 +136,26 @@ set_package_properties(Doxygen PROPERTIES
 find_package(Doxygen)
 
 # Numpy is used to convert Eigen matrices/vectors to numpy arrays
-if(PYTHON_FOUND AND NOT Boost_VERSION_STRING VERSION_LESS "1.63.0")
-    find_python_module(numpy)
-    if (PY_NUMPY)
-        find_boost_numpy()
-        if(Boost_NUMPY_LIBRARY)
-            set(OMPL_HAVE_NUMPY 1)
-            include_directories(SYSTEM "${PY_NUMPY}/core/include")
-        endif()
-    endif()
-endif()
+#if(PYTHON_FOUND AND NOT Boost_VERSION_STRING VERSION_LESS "1.63.0")
+#    find_python_module(numpy)
+#    if (PY_NUMPY)
+#        find_boost_numpy()
+#        if(Boost_NUMPY_LIBRARY)
+#            set(OMPL_HAVE_NUMPY 1)
+#            include_directories(SYSTEM "${PY_NUMPY}/core/include")
+#        endif()
+#    endif()
+#endif()
 
 # R is needed for running Planner Arena locally
 find_program(R_EXEC R)
 
 add_subdirectory(src)
-add_subdirectory(py-bindings)
-add_subdirectory(tests)
-add_subdirectory(demos)
-add_subdirectory(scripts)
-add_subdirectory(doc)
+#add_subdirectory(py-bindings)
+#add_subdirectory(tests)
+#add_subdirectory(demos)
+#add_subdirectory(scripts)
+#add_subdirectory(doc)
 
 if(NOT MSVC)
     target_link_flags(ompl)
